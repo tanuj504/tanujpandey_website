@@ -156,6 +156,45 @@
   .row .desc { color: var(--faded); font-size: 15px; margin-top: 2px; }
   .row a { text-decoration: none; font-weight: 500; }
   .row a:hover { text-decoration: underline; text-decoration-color: var(--marker); text-decoration-thickness: 2px; }
+  /* ── writing list (title left, date right) ── */
+  .post-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .post-row:first-of-type { border-top: 1px solid var(--hairline); }
+  .post-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -.015em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .post-title:hover, .post-title:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
+  }
+  .post-meta {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--faded);
+    white-space: nowrap;
+  }
+  .view-all {
+    display: block;
+    text-align: center;
+    margin-top: 32px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    color: var(--marker);
+    text-decoration: none;
+  }
+  .view-all:hover, .view-all:focus-visible { text-decoration: underline; }
+
 
   /* ── beliefs ────────────────────────────── */
   .beliefs { list-style: none; counter-reset: b; }
@@ -313,17 +352,17 @@
   <!-- ═══ WRITING: notes + ideas + essays all live here. Title + date only. ═══ -->
   <section id="writing">
     <span class="label">writing &amp; notes</span>
-    <div class="row">
-      <span class="mono"><span class="fill">[15-10-2025]</span></span>
-      <div><a href="https://open.substack.com/pub/tanujpandey/p/first-ever-marathon" class="fill">first ever marathon</a></div>
+    <div class="post-row">
+      <a class="first ever marathon" href="https://open.substack.com/pub/tanujpandey/p/first-ever-marathon" target="_blank" rel="noopener">first ever marathon</a>
+      <span class="post-meta">[15-10-2025]</span>
     </div>
     <div class="row">
       <span class="mono"><span class="fill">[18-09-2025]</span></span>
-      <div><a href="https://tanujpandey.substack.com/p/tendua-and-turahalli" class="fill">tendua and turahalli</a></div>
+      <div><a href="https://tanujpandey.substack.com/p/tendua-and-turahalli" target="_blank" class="fill">tendua and turahalli</a></div>
     </div>
     <div class="row">
       <span class="mono"><span class="fill">[11-09-2025]</span></span>
-      <div><a href="https://tanujpandey.substack.com/p/dodo-bird-and-payments" class="fill">dodo bird and payments</a></div>
+      <div><a href="https://tanujpandey.substack.com/p/dodo-bird-and-payments" target="_blank" class="fill">dodo bird and payments</a></div>
     </div>
     <div class="row">
       <span class="mono"><span class="fill">[29-07-2025]</span></span>
