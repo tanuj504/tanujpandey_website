@@ -94,8 +94,29 @@
   .fill {
     color: var(--fill-ink);
     border-bottom: 1.5px dashed var(--fill-ink);
-    cursor: help;
   }
+
+  /* ── highlighter cursor: right-handed, black & white marker ── */
+  /* tip points left = right hand holding it, writing left-to-right */
+  .wrap {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cg transform='rotate(40,14,14) translate(4,2)'%3E%3Crect x='6' y='2' width='8' height='16' rx='2' fill='white' stroke='%23111' stroke-width='1.2'/%3E%3Crect x='6' y='18' width='8' height='4' rx='0' fill='%23ddd' stroke='%23111' stroke-width='1.2'/%3E%3Cpolygon points='6,22 14,22 10,27' fill='%23111'/%3E%3Crect x='8' y='4' width='4' height='2' rx='1' fill='%23bbb'/%3E%3C/g%3E%3C/svg%3E") 22 26, text;
+  }
+
+  /* suppress native blue selection — our .user-hl span takes over */
+  ::selection { background: transparent; }
+  ::-moz-selection { background: transparent; }
+
+  /* organic marker highlight */
+  .user-hl {
+    background: var(--hl-grad);
+    background-size: 100% 85%;
+    background-repeat: no-repeat;
+    background-position: 0 60%;
+    padding: 0 .1em;
+    border-radius: 1px;
+    mix-blend-mode: multiply;
+  }
+  [data-theme="dark"] .user-hl { mix-blend-mode: screen; }
 
   /* ── header ─────────────────────────────── */
   header {
@@ -456,6 +477,49 @@
     root.setAttribute("data-theme", dark ? "light" : "dark");
     btn.textContent = dark ? "☾" : "☀";
   });
+
+  // ── organic highlighter ──────────────────────────────────────────
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+
+  function makeGrad() {
+    const angle  = rnd(100, 112).toFixed(1);
+    const f1     = rnd(0, 3).toFixed(1);
+    const s1     = rnd(4, 8).toFixed(1);
+    const s2     = rnd(88, 94).toFixed(1);
+    const f2     = rnd(95, 100).toFixed(1);
+    // Use the CSS variable value directly so it always matches --marker
+    const c      = getComputedStyle(document.documentElement)
+                     .getPropertyValue('--marker').trim();
+    return `linear-gradient(${angle}deg, transparent ${f1}%, ${c} ${s1}%, ${c} ${s2}%, transparent ${f2}%)`;
+  }
+
+  function applyHighlight(range) {
+    const node = range.commonAncestorContainer;
+    const el   = node.nodeType === 3 ? node.parentElement : node;
+    if (el.closest('.hl, .user-hl')) return; // don't re-highlight
+    try {
+      const span = document.createElement('span');
+      span.className = 'user-hl';
+      span.style.setProperty('--hl-grad', makeGrad());
+      span.style.opacity = rnd(0.82, 0.97).toFixed(2);
+      range.surroundContents(span);
+    } catch(e) { /* cross-element selection — skip gracefully */ }
+  }
+
+  function handleHighlight() {
+    setTimeout(() => {
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !sel.toString().trim()) return;
+      for (let i = 0; i < sel.rangeCount; i++) {
+        applyHighlight(sel.getRangeAt(i).cloneRange());
+      }
+      sel.removeAllRanges();
+    }, 10);
+  }
+
+  document.addEventListener('mouseup', handleHighlight);
+  document.addEventListener('touchend', () => setTimeout(handleHighlight, 70));
+  // ─────────────────────────────────────────────────────────────────
 </script>
 </body>
 </html>
