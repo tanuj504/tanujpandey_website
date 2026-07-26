@@ -117,7 +117,37 @@
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 14px 0;
+    transition: box-shadow .25s ease;
   }
+  /* full-bleed background bar — only visible once scrolled */
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .25s ease;
+    /* metallic black: subtle vertical sheen + hairline edge */
+    background:
+      linear-gradient(180deg, #232220 0%, #171614 55%, #0f0e0d 100%);
+    border-bottom: 1px solid #2e2c27;
+    backdrop-filter: blur(8px);
+  }
+  header.scrolled::before { opacity: 1; }
+  header.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,.35); }
+  /* keep nav text readable against the metallic bar in light mode too */
+  header.scrolled .logo,
+  header.scrolled nav a:hover,
+  header.scrolled nav a:focus-visible { color: #eceade; }
+  header.scrolled nav a { color: #9b978c; }
+  [data-theme="light"] header.scrolled #theme-btn { color: #eceade; }
   .logo {
     display: flex;
     align-items: center;
@@ -322,7 +352,7 @@
 
   <!-- ═══ HERO ═══ -->
   <section>
-    <h1>hi, i'm tanuj. i get <span class="hl">obsessed</span> with questions. why some products spread and others don't. why certain founders see what everyone else misses. why a tiny incentive can quietly bend everyone's behavior. i chase them until they turn into something — a product, an experiment, an essay — and that something almost always hands me the next <span class="hl">question</span>.</h1>
+    <h1>hi, i'm tanuj. i get <span class="hl">obsessed</span> with questions. why some products spread and others don't. why certain founders see what everyone else misses. why a tiny incentive can quietly bend everyone's behavior. i chase them until they turn into something: a product, an experiment, an essay. and that something almost always hands me the next <span class="hl">question</span>.</h1>
     <p class="mono">based in new delhi</p>
   </section>
 
@@ -461,6 +491,14 @@
       });
     });
   }
+
+  // ── sticky nav: metallic bar appears once you scroll ──
+  const headerEl = document.querySelector('header');
+  const onScroll = () => {
+    headerEl.classList.toggle('scrolled', window.scrollY > 12);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   // ── dark mode toggle ──
   const btn = document.getElementById("theme-btn");
