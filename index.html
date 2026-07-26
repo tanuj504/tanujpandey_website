@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,9 +109,7 @@
     background-repeat: no-repeat;
     background-position: 0 60%;
     border-radius: 1px;
-    mix-blend-mode: multiply;
   }
-  [data-theme="dark"] .user-hl { mix-blend-mode: screen; }
 
   /* ── header ─────────────────────────────── */
   header {
@@ -324,7 +322,7 @@
 
   <!-- ═══ HERO ═══ -->
   <section>
-    <h1>hi, i'm tanuj. i get <span class="hl">obsessed</span> with questions. why some products spread and others don't. why certain founders see what everyone else misses. why a tiny incentive can quietly bend everyone's behavior. i chase them until they turn into something: a product, an experiment, an essay. and that something almost always hands me the next <span class="hl">question</span>.</h1>
+    <h1>hi, i'm tanuj. i get <span class="hl">obsessed</span> with questions. why some products spread and others don't. why certain founders see what everyone else misses. why a tiny incentive can quietly bend everyone's behavior. i chase them until they turn into something — a product, an experiment, an essay — and that something almost always hands me the next <span class="hl">question</span>.</h1>
     <p class="mono">based in new delhi</p>
   </section>
 
@@ -467,6 +465,8 @@
   // ── dark mode toggle ──
   const btn = document.getElementById("theme-btn");
   const root = document.documentElement;
+  // page loads dark by default — show sun so user knows clicking goes light
+  btn.textContent = "☀";
   btn.addEventListener("click", () => {
     const dark = root.getAttribute("data-theme") === "dark";
     root.setAttribute("data-theme", dark ? "light" : "dark");
@@ -482,23 +482,48 @@
     const s1     = rnd(4, 8).toFixed(1);
     const s2     = rnd(88, 94).toFixed(1);
     const f2     = rnd(95, 100).toFixed(1);
-    // Use the CSS variable value directly so it always matches --marker
-    const c      = getComputedStyle(document.documentElement)
-                     .getPropertyValue('--marker').trim();
-    return `linear-gradient(${angle}deg, transparent ${f1}%, ${c} ${s1}%, ${c} ${s2}%, transparent ${f2}%)`;
+    // Keep var(--marker) LIVE so it re-resolves when the theme toggles,
+    // exactly like the hero .hl spans do.
+    return `linear-gradient(${angle}deg, transparent ${f1}%, var(--marker) ${s1}%, var(--marker) ${s2}%, transparent ${f2}%)`;
   }
 
   function applyHighlight(range) {
-    const node = range.commonAncestorContainer;
-    const el   = node.nodeType === 3 ? node.parentElement : node;
-    if (el.closest('.hl, .user-hl')) return; // don't re-highlight
-    try {
-      const span = document.createElement('span');
-      span.className = 'user-hl';
-      span.style.setProperty('--hl-grad', makeGrad());
-      span.style.opacity = rnd(0.82, 0.97).toFixed(2);
-      range.surroundContents(span);
-    } catch(e) { /* cross-element selection — skip gracefully */ }
+    // Collect all text nodes in the range that are NOT inside .hl or .user-hl
+    const textNodes = [];
+    const walker = document.createTreeWalker(
+      range.commonAncestorContainer.nodeType === 3
+        ? range.commonAncestorContainer.parentNode
+        : range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          if (node.parentElement.closest('.hl, .user-hl')) return NodeFilter.FILTER_REJECT;
+          const nodeRange = document.createRange();
+          nodeRange.selectNode(node);
+          // Only include nodes that actually overlap with the user's selection
+          if (range.compareBoundaryPoints(Range.END_TO_START, nodeRange) >= 0) return NodeFilter.FILTER_REJECT;
+          if (range.compareBoundaryPoints(Range.START_TO_END, nodeRange) <= 0) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+    let node;
+    while ((node = walker.nextNode())) textNodes.push(node);
+
+    textNodes.forEach(textNode => {
+      try {
+        const nodeRange = document.createRange();
+        nodeRange.selectNode(textNode);
+        // Clamp to the user's selection boundaries
+        if (range.compareBoundaryPoints(Range.START_TO_START, nodeRange) > 0) nodeRange.setStart(range.startContainer, range.startOffset);
+        if (range.compareBoundaryPoints(Range.END_TO_END, nodeRange) < 0) nodeRange.setEnd(range.endContainer, range.endOffset);
+        if (nodeRange.toString().trim() === '') return;
+        const span = document.createElement('span');
+        span.className = 'user-hl';
+        span.style.setProperty('--hl-grad', makeGrad());
+        nodeRange.surroundContents(span);
+      } catch(e) { /* skip if range boundary is complex */ }
+    });
   }
 
   function handleHighlight() {
