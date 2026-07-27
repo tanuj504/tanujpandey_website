@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>work · tanujpandey</title>
+<meta name="description" content="everything tanuj has worked on — roles, projects, and what came out of each.">
+<link rel="icon" type="image/png" href="avatar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fdfdfb;
+    --ink: #16150f;
+    --faded: #75736a;
+    --hairline: #e6e4dc;
+    --marker: #ffe14d;          /* the highlighter */
+    --marker-soft: #fff3b8;
+    --fill-ink: #8a8578;
+  }
+  [data-theme="dark"] {
+    --paper: #171614;
+    --ink: #eceade;
+    --faded: #8f8c80;
+    --hairline: #2c2a25;
+    --marker: #d9b400;
+    --marker-soft: #4a3f0a;
+    --fill-ink: #7d7a6e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    transition: background .25s ease, color .25s ease;
+  }
+
+  .wrap {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── type roles ─────────────────────────── */
+  .mono {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    color: var(--faded);
+  }
+  em.flair {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 1.08em;
+    letter-spacing: .005em;
+  }
+
+  /* ── highlighter signature ──────────────── */
+  .hl {
+    background: linear-gradient(105deg, transparent 1%, var(--marker) 3%, var(--marker) 97%, transparent 99%);
+    background-size: 200% 88%;
+    background-repeat: no-repeat;
+    background-position: 200% 62%;
+    padding: 0 .15em;
+    animation: swipe .7s ease-out forwards;
+  }
+  .hl:nth-of-type(2) { animation-delay: .35s; }
+  @keyframes swipe { to { background-position: 0% 62%; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hl { animation: none; background-position: 0% 62%; }
+  }
+
+  /* ── placeholders you must replace ──────── */
+  .fill {
+    color: var(--fill-ink);
+    border-bottom: 1.5px dashed var(--fill-ink);
+  }
+
+  /* cursor: custom marker icon — revisit later */
+
+  /* suppress native blue selection — our .user-hl span takes over */
+  ::selection { background: transparent; }
+  ::-moz-selection { background: transparent; }
+
+  /* organic marker highlight */
+  .user-hl {
+    background: var(--hl-grad);
+    background-size: 100% 85%;
+    background-repeat: no-repeat;
+    background-position: 0 60%;
+    border-radius: 1px;
+  }
+
+  /* ── header ─────────────────────────────── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 14px 0;
+    transition: box-shadow .25s ease;
+  }
+  /* full-bleed background bar — only visible once scrolled */
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .25s ease;
+    /* metallic black: subtle vertical sheen + hairline edge */
+    background:
+      linear-gradient(180deg, #232220 0%, #171614 55%, #0f0e0d 100%);
+    border-bottom: 1px solid #2e2c27;
+    backdrop-filter: blur(8px);
+  }
+  header.scrolled::before { opacity: 1; }
+  header.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,.35); }
+  /* keep nav text readable against the metallic bar in light mode too */
+  header.scrolled .logo,
+  header.scrolled nav a:hover,
+  header.scrolled nav a:focus-visible { color: #eceade; }
+  header.scrolled nav a { color: #eceade; }
+  [data-theme="light"] header.scrolled #theme-btn { color: #eceade; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 17px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .logo-img {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid var(--hairline);
+  }
+  nav { display: flex; gap: 18px; align-items: baseline; }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14.5px;
+  }
+  nav a:hover, nav a:focus-visible { color: var(--ink); }
+  #theme-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 15px; line-height: 1; padding: 2px;
+    color: var(--ink);
+    transition: transform .3s ease;
+  }
+  [data-theme="dark"] #theme-btn { color: var(--marker); }
+  #theme-btn:hover { transform: rotate(20deg) scale(1.15); }
+
+  /* ── sections ───────────────────────────── */
+  section { margin-bottom: 64px; }
+  .label {
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: var(--faded);
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  p + p { margin-top: 14px; }
+
+  a { color: var(--ink); text-decoration-color: var(--hairline); text-underline-offset: 3px; }
+  a:hover, a:focus-visible { text-decoration-color: var(--marker); text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--marker); outline-offset: 3px; border-radius: 2px; }
+
+  /* ── list rows (work + writing) ─────────── */
+  .row {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    gap: 16px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: baseline;
+  }
+  .row:first-of-type { border-top: 1px solid var(--hairline); }
+  .row .desc { color: var(--faded); font-size: 15px; margin-top: 2px; }
+  .row a { text-decoration: none; font-weight: 500; }
+  .row a:hover { text-decoration: underline; text-decoration-color: var(--marker); text-decoration-thickness: 2px; }
+  /* ── writing list (title left, date right) ── */
+  .post-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .post-row:first-of-type { border-top: 1px solid var(--hairline); }
+  .post-title {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -.015em;
+    color: var(--faded);
+    text-decoration: none;
+  }
+  .post-title:hover, .post-title:focus-visible {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
+  }
+  .post-meta {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--faded);
+    white-space: nowrap;
+  }
+  .view-all {
+    display: block;
+    text-align: center;
+    margin-top: 32px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    color: var(--marker);
+    text-decoration: none;
+  }
+  .view-all:hover, .view-all:focus-visible { text-decoration: underline; }
+
+  /* ── work rows: title + desc left, year right ── */
+  .work-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .work-row:first-of-type { border-top: 1px solid var(--hairline); }
+  .work-main { display: flex; flex-direction: column; gap: 4px; }
+  .work-title {
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -.01em;
+    color: var(--faded);
+    text-decoration: none;
+    width: fit-content;
+  }
+  .work-title:hover, .work-title:focus-visible {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
+  }
+  .work-desc { font-size: 15px; color: var(--faded); line-height: 1.55; }
+
+  /* ── beliefs ────────────────────────────── */
+  .beliefs { list-style: none; counter-reset: b; }
+  .beliefs li {
+    counter-increment: b;
+    padding: 7px 0 7px 34px;
+    position: relative;
+  }
+  .beliefs li::before {
+    content: counter(b, decimal-leading-zero);
+    position: absolute; left: 0; top: 10px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--faded);
+  }
+
+  /* ── contact ────────────────────────────── */
+  .email {
+    font-size: 19px;
+    font-weight: 500;
+  }
+  .email a { color: var(--faded); cursor: pointer; }
+  .email a:hover, .email a:focus-visible {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
+  }
+  .socials { margin-top: 12px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .socials a { font-size: 14.5px; color: var(--faded); }
+  .socials a:hover { color: var(--ink); }
+
+  /* ── footer ─────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--hairline);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  footer .mono { font-size: 12px; }
+  #rotator { font-family: "Instrument Serif", serif; font-style: italic; font-size: 17px; font-weight: 700; color: var(--ink); }
+
+  @media (max-width: 480px) {
+    .wrap { padding-top: 32px; }
+    header { margin-bottom: 52px; }
+    h1 { font-size: 26px; }
+    .row { grid-template-columns: 48px 1fr; gap: 12px; }
+  }
+</style>
+
+<style>
+  .entry { padding: 40px 0; border-bottom: 1px solid var(--hairline); }
+  .entry:first-of-type { border-top: 1px solid var(--hairline); }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 6px; }
+  .entry-title { font-size: 22px; font-weight: 500; letter-spacing: -.015em; color: var(--ink); }
+  .entry-role { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--faded); letter-spacing: .03em; margin-bottom: 16px; }
+  .entry ul { list-style: none; }
+  .entry li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--faded); font-size: 15.5px; line-height: 1.65; }
+  .entry li::before { content: '—'; position: absolute; left: 0; color: var(--hairline); }
+  .entry-link { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--marker); text-decoration: none; display: inline-block; margin-top: 6px; }
+  .entry-link:hover { text-decoration: underline; }
+  .back { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--faded); text-decoration: none; display: inline-block; margin-bottom: 40px; }
+  .back:hover { color: var(--ink); }
+  .page-title { font-size: 26px; font-weight: 400; letter-spacing: -.01em; margin-bottom: 8px; }
+  .page-sub { color: var(--faded); font-size: 16px; margin-bottom: 56px; }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="logo" href="index.html"><img src="avatar.png" alt="" class="logo-img"><span class="logo-text">tanujpandey</span></a>
+    <nav>
+      <a href="index.html#work">work</a>
+      <a href="index.html#writing">writing</a>
+      <a href="TANUJ_PANDEY.pdf" target="_blank" rel="noopener">resume</a>
+      <a href="index.html#contact">contact</a>
+      <button id="theme-btn" aria-label="toggle dark mode">☀</button>
+    </nav>
+  </header>
+
+  <a class="back" href="index.html">← back home</a>
+
+  <h1 class="page-title">everything i've worked on</h1>
+  <p class="page-sub">newest first. some of it shipped, some of it taught me something, most of it did both.</p>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">stride</span>
+      </div>
+      <div class="entry-role">building now · 2026</div>
+      <ul>
+        <li>a running app built on one idea: a run should mean something beyond the distance. building it end to end — product thinking, design calls, and the code itself.</li>
+        <li>learning as i ship. every feature is a decision i have to make and then live with.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">legal document translation, with ai</span>
+      </div>
+      <div class="entry-role">side quest · 2026</div>
+      <ul>
+        <li>helping lawyers turn dense native-language documents into readable english using ai.</li>
+        <li>started as a favour, turned into a real workflow problem worth solving.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">ditto insurance</span>
+      </div>
+      <div class="entry-role">customer journey & competitor analysis · 2024</div>
+      <ul>
+        <li>conducted a comprehensive cx audit of ditto by analysing its offerings, mapping advisor interactions, and benchmarking against competitor beshak.org through platform testing and advisor calls.</li>
+        <li>identified core cx gaps: limited advisor availability / fixed slots, information overload in the first call, and under-leveraged social subscribers — and prioritised trust-building and relationship models as the top fixes.</li>
+        <li>delivered a founder-facing report + research dossier with actionable solutions: extended advisor hours (with the right incentive structures), dedicated single-point advisors, quarterly after-sales check-ins, and targeted content repurposing for discovery and trust.</li>
+      </ul>
+      <a class="entry-link" href="#" target="_blank" rel="noopener">view the work →</a>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">cars24</span>
+      </div>
+      <div class="entry-role">field & product improvement analysis · 2024</div>
+      <ul>
+        <li>conducted a competitive analysis of cars24 vs spinny, cardekho, and olx autos in delhi ncr, benchmarking customer journeys and service models.</li>
+        <li>led primary, on-ground research across 7+ hubs/outlets (cars24, spinny, olx auto), testing cars to evaluate customer journeys and service quality.</li>
+        <li>interviewed 5+ users and 10+ relationship managers to identify pain points, friction areas, and best practices in the buyer/seller experience.</li>
+        <li>delivered a structured audit deck with insights on buyer/seller behaviour, cx breakdowns, and actionable recommendations to improve retention and satisfaction.</li>
+      </ul>
+      <a class="entry-link" href="#" target="_blank" rel="noopener">view the work →</a>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">infoneo technologies</span>
+      </div>
+      <div class="entry-role">research analyst · sep 2023 – mar 2025</div>
+      <ul>
+        <li>defined and executed the content strategy and rollout plan to publish 60+ sector and state pages within a 60-day timeline, producing investor-facing research across 35+ sectors, 28 states, and 8 uts for the invest india platform.</li>
+        <li>served as the on-site point of contact at invest india, aligning policy experts, sector teams, and developers to translate business requirements into structured, publish-ready content.</li>
+        <li>translated complex policy and sector analysis into concise, user-friendly web content and data summaries to improve platform usability for investors.</li>
+        <li>partnered with the indian institute of banking &amp; finance (iibf) to plan and develop financial-awareness content, supporting nationwide outreach and engagement objectives.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">plotx (now hunch)</span>
+      </div>
+      <div class="entry-role">research analyst, crypto &amp; nft · jun 2022 – feb 2023</div>
+      <ul>
+        <li>launched the nft category end-to-end: authored the feasibility (aida) report, owned launch strategy and creatives. achieved participation from 109+ countries with ~80% repeat participation.</li>
+        <li>designed and executed growth and ux strategy across nft, football, and cricket categories, driving a 70% increase in daily participation by simplifying user flows (7 → 3 clicks) and reducing friction.</li>
+        <li>built and scaled community growth across discord (24k+), x (~15k), and telegram (~9k), defining engagement playbooks, campaigns, amas, and event-led activation to improve adoption and retention.</li>
+        <li>partnered with the head of strategy on market research, trend analysis, and product prioritisation to inform roadmap decisions and category expansion.</li>
+        <li>supported hiring by interviewing 8+ candidates and defining role expectations. awarded a pre-placement offer for performance.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">readon</span>
+      </div>
+      <div class="entry-role">financial research · nov 2021 – feb 2022</div>
+      <ul>
+        <li>authored 20+ industry articles on indian startups and global financial crises, helping increase reader engagement by ~25%.</li>
+        <li>analysed 5+ indian unicorns and 10+ global scams/crises, producing actionable insights on business models, revenue strategies, and systemic risk.</li>
+        <li>researched the web3 landscape and produced reports on 5+ emerging companies, surfacing adoption trends and investment theses. created scripts for 20+ instagram reels and short-form content, lifting social engagement by ~20%.</li>
+      </ul>
+    </div>
+
+
+  <footer>
+    <span id="rotator">…</span>
+    <span class="mono">© 2026 tanuj · refining as i learn</span>
+  </footer>
+
+</div>
+
+<script>
+  const lines = [
+    "you scrolled all the way down. we should probably talk.",
+    "the more we value things outside our control, the less control we have. — epictetus",
+    "day by day, what you do is who you become — heraclitus",
+    "ever failed. no matter. try again. fail again. fail better. — samuel beckett",
+    "the best way to predict the future is to ship it.",
+    "ask.",
+    "addition by subtraction.",
+    "consistency creates competence.",
+    "to earn compound interest, compound your interests.",
+    "the most important thing is on the other side of smth uncomfortable.",
+    "if you don't risk the bad meal you'd never get the magical one. — anthony bourdain"
+  ];
+  document.getElementById("rotator").textContent = lines[Math.floor(Math.random() * lines.length)];
+
+  const headerEl = document.querySelector('header');
+  const onScroll = () => headerEl.classList.toggle('scrolled', window.scrollY > 12);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const btn = document.getElementById("theme-btn");
+  const root = document.documentElement;
+  btn.textContent = "☀";
+  btn.addEventListener("click", () => {
+    const dark = root.getAttribute("data-theme") === "dark";
+    root.setAttribute("data-theme", dark ? "light" : "dark");
+    btn.textContent = dark ? "☾" : "☀";
+  });
+
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function makeGrad() {
+    const angle = rnd(100, 112).toFixed(1);
+    const f1 = rnd(0, 3).toFixed(1);
+    const s1 = rnd(4, 8).toFixed(1);
+    const s2 = rnd(88, 94).toFixed(1);
+    const f2 = rnd(95, 100).toFixed(1);
+    return `linear-gradient(${angle}deg, transparent ${f1}%, var(--marker) ${s1}%, var(--marker) ${s2}%, transparent ${f2}%)`;
+  }
+  function applyHighlight(range) {
+    const textNodes = [];
+    const walker = document.createTreeWalker(
+      range.commonAncestorContainer.nodeType === 3 ? range.commonAncestorContainer.parentNode : range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,
+      { acceptNode(node) {
+          if (node.parentElement.closest('.hl, .user-hl')) return NodeFilter.FILTER_REJECT;
+          const nr = document.createRange(); nr.selectNode(node);
+          if (range.compareBoundaryPoints(Range.END_TO_START, nr) >= 0) return NodeFilter.FILTER_REJECT;
+          if (range.compareBoundaryPoints(Range.START_TO_END, nr) <= 0) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+      } }
+    );
+    let node; while ((node = walker.nextNode())) textNodes.push(node);
+    textNodes.forEach(tn => {
+      try {
+        const nr = document.createRange(); nr.selectNode(tn);
+        if (range.compareBoundaryPoints(Range.START_TO_START, nr) > 0) nr.setStart(range.startContainer, range.startOffset);
+        if (range.compareBoundaryPoints(Range.END_TO_END, nr) < 0) nr.setEnd(range.endContainer, range.endOffset);
+        if (nr.toString().trim() === '') return;
+        const span = document.createElement('span');
+        span.className = 'user-hl';
+        span.style.setProperty('--hl-grad', makeGrad());
+        nr.surroundContents(span);
+      } catch(e) {}
+    });
+  }
+  function handleHighlight() {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.toString().trim()) return;
+    for (let i = 0; i < sel.rangeCount; i++) applyHighlight(sel.getRangeAt(i).cloneRange());
+    sel.removeAllRanges();
+  }
+  document.addEventListener('mouseup', handleHighlight);
+  document.addEventListener('touchend', () => setTimeout(handleHighlight, 70));
+</script>
+</body>
+</html>
