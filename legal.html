@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>work · tanujpandey</title>
-<meta name="description" content="everything tanuj has worked on — roles, projects, and what came out of each.">
+<title>legal translation &middot; tanujpandey</title>
+<meta name="description" content="an ai system that translates hindi legal documents into english. built by accident, run by hand, paid per page.">
 <link rel="icon" type="image/png" href="avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -251,13 +251,23 @@
     justify-content: space-between;
     align-items: baseline;
     gap: 24px;
-    padding: 26px 0;
+    margin: 0 -18px;
+    padding: 26px 18px;
     border-bottom: 1px solid var(--hairline);
+    border-radius: 3px;
+    transition: background .2s ease;
+  }
+  .work-row:hover { background: rgba(255, 225, 77, .045); }
+  .work-row:hover .work-title {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
   }
   .work-row:first-of-type { border-top: 1px solid var(--hairline); }
   .work-main { display: flex; flex-direction: column; gap: 4px; }
   .work-title {
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 500;
     letter-spacing: -.01em;
     color: var(--faded);
@@ -324,20 +334,18 @@
 </style>
 
 <style>
-  .entry { padding: 40px 0; border-bottom: 1px solid var(--hairline); }
-  .entry:first-of-type { border-top: 1px solid var(--hairline); }
-  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 6px; }
-  .entry-title { font-size: 22px; font-weight: 500; letter-spacing: -.015em; color: var(--ink); }
-  .entry-role { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--faded); letter-spacing: .03em; margin-bottom: 16px; }
-  .entry ul { list-style: none; }
-  .entry li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--faded); font-size: 15.5px; line-height: 1.65; }
-  .entry li::before { content: '—'; position: absolute; left: 0; color: var(--hairline); }
-  .entry-link { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--marker); text-decoration: none; display: inline-block; margin-top: 6px; }
-  .entry-link:hover { text-decoration: underline; }
   .back { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--faded); text-decoration: none; display: inline-block; margin-bottom: 40px; }
   .back:hover { color: var(--ink); }
-  .page-title { font-size: 26px; font-weight: 400; letter-spacing: -.01em; margin-bottom: 8px; }
-  .page-sub { color: var(--faded); font-size: 16px; margin-bottom: 56px; }
+  .page-title { font-size: 30px; font-weight: 500; letter-spacing: -.02em; margin-bottom: 6px; }
+  .page-sub { color: var(--faded); font-size: 16px; font-style: italic; font-family: "Instrument Serif", serif; margin-bottom: 14px; }
+  .page-meta { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--faded); margin-bottom: 56px; }
+  article h2 { font-size: 13px; font-family: "IBM Plex Mono", monospace; font-weight: 500; letter-spacing: .1em; color: var(--faded); margin: 52px 0 18px; }
+  article p { font-size: 17px; line-height: 1.75; margin-bottom: 18px; }
+  article .lede { font-size: 19px; line-height: 1.7; }
+  .spec { border-left: 2px solid var(--hairline); padding-left: 18px; margin: 22px 0; }
+  .spec p { color: var(--faded); font-size: 16px; margin-bottom: 8px; }
+  .rule { border: 0; border-top: 1px solid var(--hairline); margin: 56px 0 0; }
+  .closer { font-family: "Instrument Serif", serif; font-style: italic; font-size: 19px; line-height: 1.65; color: var(--ink); margin: 20px 0; }
 </style>
 
 </head>
@@ -347,114 +355,74 @@
   <header>
     <a class="logo" href="index.html"><img src="avatar.png" alt="" class="logo-img"><span class="logo-text">tanujpandey</span></a>
     <nav>
-      <a href="index.html#work">work</a>
+      <a href="work.html">work</a>
       <a href="index.html#writing">writing</a>
       <a href="TANUJ_PANDEY.pdf" target="_blank" rel="noopener">resume</a>
       <a href="index.html#contact">contact</a>
-      <button id="theme-btn" aria-label="toggle dark mode">☀</button>
+      <button id="theme-btn" aria-label="toggle dark mode">&#9728;</button>
     </nav>
   </header>
 
-  <a class="back" href="index.html">← back home</a>
 
-  <h1 class="page-title">everything i've worked on</h1>
-  <p class="page-sub">newest first. some of it shipped, some of it taught me something, most of it did both.</p>
+  <a class="back" href="work.html">&larr; back to work</a>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title"><a href="stride.html" style="color:inherit;text-decoration:none">stride</a></span>
-      </div>
-      <div class="entry-role">fitness app, live on the app store · 2025–26</div>
-      <ul>
-        <li>came from a question i couldn't drop: why do people know they should run, and still not do it? i built the answer instead of reading about it.</li>
-        <li>every walk builds territory on a map. someone else walks it, they take it. you want it back, you go outside again.</li>
-        <li>started not knowing what a terminal was. shipped to the app store on the second submission. learned more from what i got wrong than from what worked.</li>
-      </ul>
-      <a class="entry-link" href="stride.html">read the whole thing →</a>
+  <h1 class="page-title">translating legal documents with ai</h1>
+  <p class="page-sub">a service, not a product. on purpose.</p>
+  <p class="page-meta">running now &middot; 25 documents &middot; 4 lawyers &middot; paid per page</p>
+
+  <article>
+
+    <h2>it found me</h2>
+    <p class="lede">i wasn't looking for this one.</p>
+    <p>i was at a friend's place. his brother is a lawyer, and he knew i spend most of my time messing around with claude and codex, so he asked whether ai could translate hindi legal documents into english. i said probably. opus 4.8 was the newest model at the time and it was handling harder things than that.</p>
+    <p>it was a saturday. he had a hearing on monday. the human translators had told him thursday at the earliest, and his only other options were paying them more to rush it or pushing the hearing back.</p>
+    <p>so i asked him what would break it.</p>
+    <div class="spec">
+      <p>no copying signatures or stamps.</p>
+      <p>the meaning cannot shift.</p>
+      <p>formatting and alignment have to match the original.</p>
+      <p>no invented jargon.</p>
+      <p>and the words have to be literal. if someone has died, the document says he is dead. no softening it.</p>
     </div>
+    <p>that list turned out to be the entire spec.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title"><a href="legal.html" style="color:inherit;text-decoration:none">legal translation, with ai</a></span>
-      </div>
-      <div class="entry-role">running now · 25 documents · 4 lawyers · 2026</div>
-      <ul>
-        <li>started as a favour. a lawyer needed hindi court documents in english by monday and the human translators said thursday.</li>
-        <li>built the system in a weekend, then kept it improving by having the lawyers correct every page before it went out.</li>
-        <li>25 documents in, four lawyers pay me per page, and every one of them came through word of mouth. still a service, not a product, deliberately.</li>
-      </ul>
-      <a class="entry-link" href="legal.html">read the whole thing →</a>
-    </div>
+    <h2>what i actually built</h2>
+    <p>i gave claude the full brief and asked it to write its own prompt back to me: work out which tools and skills the job needs, translate, then output a pdf with the formatting and alignment intact.</p>
+    <p>then i fed it the documents. six of them, sixty to seventy pages.</p>
+    <p>after every batch i asked his brother to read it before it went for stamping. whatever he flagged went straight back into the system. it got measurably better inside the same week, document by document, because someone who actually knew the law was checking every page.</p>
+    <p>he was surprised by the accuracy. then he paid me, which i hadn't asked for, because i'd saved him a week and the rush fee.</p>
+    <p>he also told me the real problem isn't translation. it's that human translators are slow and moody and miss deadlines, and the whole case timeline bends around them.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">ditto insurance</span>
-      </div>
-      <div class="entry-role">customer journey & competitor analysis · 2024</div>
-      <ul>
-        <li>conducted a comprehensive cx audit of ditto by analysing its offerings, mapping advisor interactions, and benchmarking against competitor beshak.org through platform testing and advisor calls.</li>
-        <li>identified core cx gaps: limited advisor availability / fixed slots, information overload in the first call, and under-leveraged social subscribers — and prioritised trust-building and relationship models as the top fixes.</li>
-        <li>delivered a founder-facing report + research dossier with actionable solutions: extended advisor hours (with the right incentive structures), dedicated single-point advisors, quarterly after-sales check-ins, and targeted content repurposing for discovery and trust.</li>
-      </ul>
-      <a class="entry-link" href="#" target="_blank" rel="noopener">view the work →</a>
-    </div>
+    <h2>then it spread without me</h2>
+    <p>my uncle is a lawyer too, same complaint about translators. he was reluctant. i did the first document, he read it, and asked me to take all of them.</p>
+    <p>he's the one who called it more than 95% accurate. he also said that if i turned it into a proper system, nobody would need human translators at all.</p>
+    <p>he referred his lawyer friends. they pay me too. i do the first two or three documents free so people can see it work, and after that it's per page.</p>
+    <p>twenty-five documents in, four lawyers currently. i have done nothing to find any of them. all of it has been word of mouth, and that's the number i pay most attention to.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">cars24</span>
-      </div>
-      <div class="entry-role">field & product improvement analysis · 2024</div>
-      <ul>
-        <li>conducted a competitive analysis of cars24 vs spinny, cardekho, and olx autos in delhi ncr, benchmarking customer journeys and service models.</li>
-        <li>led primary, on-ground research across 7+ hubs/outlets (cars24, spinny, olx auto), testing cars to evaluate customer journeys and service quality.</li>
-        <li>interviewed 5+ users and 10+ relationship managers to identify pain points, friction areas, and best practices in the buyer/seller experience.</li>
-        <li>delivered a structured audit deck with insights on buyer/seller behaviour, cx breakdowns, and actionable recommendations to improve retention and satisfaction.</li>
-      </ul>
-      <a class="entry-link" href="#" target="_blank" rel="noopener">view the work →</a>
-    </div>
+    <h2>the hard part</h2>
+    <p>getting from 95% to 99%.</p>
+    <p>i assumed volume would do it. it doesn't. accuracy plateaus.</p>
+    <p>what i do now is ask the system to write itself a stronger prompt every five or six documents, and log every new finding in a claude.md file. that helps. it isn't the answer.</p>
+    <p>the answer is that it needs real legal knowledge: the terms, the jargon, what a judge is reading for, what a filing is supposed to sound like. and you can't do that inside a chat session, because the context keeps growing and response quality falls off as it does.</p>
+    <p>which means it has to become a product built for this one job.</p>
+    <p>i don't know how to do that yet. i'm researching it, asking people on reddit, and asking the lawyers themselves what the system needs to know. that's honestly where it stands.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">infoneo technologies</span>
-      </div>
-      <div class="entry-role">research analyst · sep 2023 – mar 2025</div>
-      <ul>
-        <li>defined and executed the content strategy and rollout plan to publish 60+ sector and state pages within a 60-day timeline, producing investor-facing research across 35+ sectors, 28 states, and 8 uts for the invest india platform.</li>
-        <li>served as the on-site point of contact at invest india, aligning policy experts, sector teams, and developers to translate business requirements into structured, publish-ready content.</li>
-        <li>translated complex policy and sector analysis into concise, user-friendly web content and data summaries to improve platform usability for investors.</li>
-        <li>partnered with the indian institute of banking &amp; finance (iibf) to plan and develop financial-awareness content, supporting nationwide outreach and engagement objectives.</li>
-      </ul>
-    </div>
+    <h2>why i'm running it by hand</h2>
+    <p>everything stride taught me the expensive way, i'm doing deliberately this time.</p>
+    <p>stride started from a question i found interesting. this started from someone's actual monday deadline.</p>
+    <p>with stride i built for months and talked to users late. here the lawyers read every page before it goes out, and their corrections go into the system the same day.</p>
+    <p>with stride we deferred revenue until the savings ran out. this made money on the first document.</p>
+    <p>and with stride we kept adding features because building was fun. so i'm not building the product yet. the system isn't good enough to productise, and shipping a tool that's 95% right on a court filing is worse than shipping nothing at all.</p>
+    <p>i'm also asking every lawyer what else they'd pay an ai to do. some of those answers are more interesting than translation.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">plotx (now hunch)</span>
-      </div>
-      <div class="entry-role">research analyst, crypto &amp; nft · jun 2022 – feb 2023</div>
-      <ul>
-        <li>launched the nft category end-to-end: authored the feasibility (aida) report, owned launch strategy and creatives. achieved participation from 109+ countries with ~80% repeat participation.</li>
-        <li>designed and executed growth and ux strategy across nft, football, and cricket categories, driving a 70% increase in daily participation by simplifying user flows (7 → 3 clicks) and reducing friction.</li>
-        <li>built and scaled community growth across discord (24k+), x (~15k), and telegram (~9k), defining engagement playbooks, campaigns, amas, and event-led activation to improve adoption and retention.</li>
-        <li>partnered with the head of strategy on market research, trend analysis, and product prioritisation to inform roadmap decisions and category expansion.</li>
-        <li>supported hiring by interviewing 8+ candidates and defining role expectations. awarded a pre-placement offer for performance.</li>
-      </ul>
-    </div>
+    <hr class="rule">
+    <p class="closer">i'm not betting my life on this one. it pays, it teaches me something every week, and it might turn into a company. mostly it taught me that when you find a problem someone is already paying badly to solve, you don't have to convince anyone of anything.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">readon</span>
-      </div>
-      <div class="entry-role">financial research · nov 2021 – feb 2022</div>
-      <ul>
-        <li>authored 20+ industry articles on indian startups and global financial crises, helping increase reader engagement by ~25%.</li>
-        <li>analysed 5+ indian unicorns and 10+ global scams/crises, producing actionable insights on business models, revenue strategies, and systemic risk.</li>
-        <li>researched the web3 landscape and produced reports on 5+ emerging companies, surfacing adoption trends and investment theses. created scripts for 20+ instagram reels and short-form content, lifting social engagement by ~20%.</li>
-      </ul>
-    </div>
+  </article>
 
 
   <footer>
-    <span id="rotator">…</span>
+    <span id="rotator">&hellip;</span>
     <span class="mono">refining as i learn</span>
   </footer>
 
@@ -463,16 +431,11 @@
 <script>
   const lines = [
     "you scrolled all the way down. we should probably talk.",
-    "the more we value things outside our control, the less control we have. — epictetus",
-    "day by day, what you do is who you become — heraclitus",
-    "ever failed. no matter. try again. fail again. fail better. — samuel beckett",
     "the best way to predict the future is to ship it.",
+    "make it exist first. make it better later.",
     "ask.",
-    "addition by subtraction.",
     "consistency creates competence.",
-    "to earn compound interest, compound your interests.",
-    "the most important thing is on the other side of smth uncomfortable.",
-    "if you don't risk the bad meal you'd never get the magical one. — anthony bourdain"
+    "sell it before you build it."
   ];
   document.getElementById("rotator").textContent = lines[Math.floor(Math.random() * lines.length)];
 
@@ -483,11 +446,11 @@
 
   const btn = document.getElementById("theme-btn");
   const root = document.documentElement;
-  btn.textContent = "☀";
+  btn.textContent = "\u2600";
   btn.addEventListener("click", () => {
     const dark = root.getAttribute("data-theme") === "dark";
     root.setAttribute("data-theme", dark ? "light" : "dark");
-    btn.textContent = dark ? "☾" : "☀";
+    btn.textContent = dark ? "\u263E" : "\u2600";
   });
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
