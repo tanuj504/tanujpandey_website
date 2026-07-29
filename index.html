@@ -264,13 +264,23 @@
     justify-content: space-between;
     align-items: baseline;
     gap: 24px;
-    padding: 26px 0;
+    margin: 0 -18px;
+    padding: 26px 18px;
     border-bottom: 1px solid var(--hairline);
+    border-radius: 3px;
+    transition: background .2s ease;
+  }
+  .work-row:hover { background: rgba(255, 225, 77, .045); }
+  .work-row:hover .work-title {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
   }
   .work-row:first-of-type { border-top: 1px solid var(--hairline); }
   .work-main { display: flex; flex-direction: column; gap: 4px; }
   .work-title {
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 500;
     letter-spacing: -.01em;
     color: var(--faded);
@@ -379,7 +389,7 @@
     <div class="work-row">
       <div class="work-main">
         <a class="work-title" href="stride.html">stride</a>
-        <span class="work-desc">a fitness app that turns walking into territory you can lose. started from a question i couldn't drop, and from not knowing what a terminal was. shipped to the app store on the second submission.</span>
+        <span class="work-desc">a fitness app that turns walking and running into territory you can lose. i built it to answer a question i couldn't drop: why do people know they should run, and still not do it? it's live on the app store.</span>
       </div>
       <span class="post-meta">2025–26</span>
     </div>
