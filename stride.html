@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>work · tanujpandey</title>
-<meta name="description" content="everything tanuj has worked on — roles, projects, and what came out of each.">
+<title>stride &middot; tanujpandey</title>
+<meta name="description" content="stride: a fitness app that turns walking into territory you can lose. what i built, what broke, and what i'd never repeat.">
 <link rel="icon" type="image/png" href="avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -324,20 +324,19 @@
 </style>
 
 <style>
-  .entry { padding: 40px 0; border-bottom: 1px solid var(--hairline); }
-  .entry:first-of-type { border-top: 1px solid var(--hairline); }
-  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 6px; }
-  .entry-title { font-size: 22px; font-weight: 500; letter-spacing: -.015em; color: var(--ink); }
-  .entry-role { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--faded); letter-spacing: .03em; margin-bottom: 16px; }
-  .entry ul { list-style: none; }
-  .entry li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--faded); font-size: 15.5px; line-height: 1.65; }
-  .entry li::before { content: '—'; position: absolute; left: 0; color: var(--hairline); }
-  .entry-link { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--marker); text-decoration: none; display: inline-block; margin-top: 6px; }
-  .entry-link:hover { text-decoration: underline; }
   .back { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--faded); text-decoration: none; display: inline-block; margin-bottom: 40px; }
   .back:hover { color: var(--ink); }
-  .page-title { font-size: 26px; font-weight: 400; letter-spacing: -.01em; margin-bottom: 8px; }
-  .page-sub { color: var(--faded); font-size: 16px; margin-bottom: 56px; }
+  .page-title { font-size: 30px; font-weight: 500; letter-spacing: -.02em; margin-bottom: 6px; }
+  .page-sub { color: var(--faded); font-size: 16px; font-style: italic; font-family: "Instrument Serif", serif; margin-bottom: 14px; }
+  .page-meta { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--faded); margin-bottom: 56px; }
+  .page-meta a { color: var(--marker); text-decoration: none; }
+  .page-meta a:hover { text-decoration: underline; }
+  article h2 { font-size: 13px; font-family: "IBM Plex Mono", monospace; font-weight: 500; letter-spacing: .1em; color: var(--faded); margin: 52px 0 18px; }
+  article p { font-size: 17px; line-height: 1.75; margin-bottom: 18px; }
+  article p strong { font-weight: 600; color: var(--ink); }
+  article .lede { font-size: 19px; line-height: 1.7; }
+  .rule { border: 0; border-top: 1px solid var(--hairline); margin: 56px 0 0; }
+  .closer { font-family: "Instrument Serif", serif; font-style: italic; font-size: 19px; line-height: 1.65; color: var(--ink); margin-top: 48px; }
 </style>
 
 </head>
@@ -347,112 +346,80 @@
   <header>
     <a class="logo" href="index.html"><img src="avatar.png" alt="" class="logo-img"><span class="logo-text">tanujpandey</span></a>
     <nav>
-      <a href="index.html#work">work</a>
+      <a href="work.html">work</a>
       <a href="index.html#writing">writing</a>
       <a href="TANUJ_PANDEY.pdf" target="_blank" rel="noopener">resume</a>
       <a href="index.html#contact">contact</a>
-      <button id="theme-btn" aria-label="toggle dark mode">☀</button>
+      <button id="theme-btn" aria-label="toggle dark mode">&#9728;</button>
     </nav>
   </header>
 
-  <a class="back" href="index.html">← back home</a>
 
-  <h1 class="page-title">everything i've worked on</h1>
-  <p class="page-sub">newest first. some of it shipped, some of it taught me something, most of it did both.</p>
+  <a class="back" href="work.html">&larr; back to work</a>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title"><a href="stride.html" style="color:inherit;text-decoration:none">stride</a></span>
-      </div>
-      <div class="entry-role">fitness app, live on the app store · 2025–26</div>
-      <ul>
-        <li>came from a question i couldn't drop: why do people know they should run, and still not do it? i built the answer instead of reading about it.</li>
-        <li>every walk builds territory on a map. someone else walks it, they take it. you want it back, you go outside again.</li>
-        <li>started not knowing what a terminal was. shipped to the app store on the second submission. learned more from what i got wrong than from what worked.</li>
-      </ul>
-      <a class="entry-link" href="stride.html">read the whole thing →</a>
-    </div>
+  <h1 class="page-title">stride</h1>
+  <p class="page-sub">a fitness app that turns walking into territory you can lose.</p>
+  <p class="page-meta">live on the app store &middot; built 2025&ndash;26 &middot; <a href="#" target="_blank" rel="noopener">download &rarr;</a></p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">legal document translation, with ai</span>
-      </div>
-      <div class="entry-role">side quest · 2026</div>
-      <ul>
-        <li>helping lawyers turn dense native-language documents into readable english using ai.</li>
-        <li>started as a favour, turned into a real workflow problem worth solving.</li>
-      </ul>
-    </div>
+  <article>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">ditto insurance</span>
-      </div>
-      <div class="entry-role">customer journey & competitor analysis · 2024</div>
-      <ul>
-        <li>conducted a comprehensive cx audit of ditto by analysing its offerings, mapping advisor interactions, and benchmarking against competitor beshak.org through platform testing and advisor calls.</li>
-        <li>identified core cx gaps: limited advisor availability / fixed slots, information overload in the first call, and under-leveraged social subscribers — and prioritised trust-building and relationship models as the top fixes.</li>
-        <li>delivered a founder-facing report + research dossier with actionable solutions: extended advisor hours (with the right incentive structures), dedicated single-point advisors, quarterly after-sales check-ins, and targeted content repurposing for discovery and trust.</li>
-      </ul>
-      <a class="entry-link" href="#" target="_blank" rel="noopener">view the work →</a>
-    </div>
+    <h2>the question</h2>
+    <p class="lede">why do millions of people know they should run, and still not do it?</p>
+    <p>i didn't know the answer. instead of reading about it, i decided to build something and find out.</p>
+    <p>the problem isn't awareness. everyone knows walking is good for them. the hard part is showing up tomorrow.</p>
+    <p>one thing kept coming back to me: everyone walks. bed to bathroom, kitchen to drawing room, car to office, office to home, out again after dinner. it already happens, every single day, and nobody counts it. so what if it counted toward something you'd be annoyed to lose?</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">cars24</span>
-      </div>
-      <div class="entry-role">field & product improvement analysis · 2024</div>
-      <ul>
-        <li>conducted a competitive analysis of cars24 vs spinny, cardekho, and olx autos in delhi ncr, benchmarking customer journeys and service models.</li>
-        <li>led primary, on-ground research across 7+ hubs/outlets (cars24, spinny, olx auto), testing cars to evaluate customer journeys and service quality.</li>
-        <li>interviewed 5+ users and 10+ relationship managers to identify pain points, friction areas, and best practices in the buyer/seller experience.</li>
-        <li>delivered a structured audit deck with insights on buyer/seller behaviour, cx breakdowns, and actionable recommendations to improve retention and satisfaction.</li>
-      </ul>
-      <a class="entry-link" href="#" target="_blank" rel="noopener">view the work →</a>
-    </div>
+    <h2>the mechanic</h2>
+    <p>people are protective of things they own. that's the entire insight the product sits on.</p>
+    <p>every walk builds territory on a map. walk through someone else's territory and you take it from them. if you want yours back, you have to go outside and walk it again.</p>
+    <p>and it only works if it's people you know. nobody cares about beating a stranger on a leaderboard. you care about your friend, your colleague, your brother. the people whose wins annoy you just enough to make you put your shoes on.</p>
+    <p>you never have to run. you just walk slightly more than you did yesterday, and mostly you don't notice you're doing it.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">infoneo technologies</span>
-      </div>
-      <div class="entry-role">research analyst · sep 2023 – mar 2025</div>
-      <ul>
-        <li>defined and executed the content strategy and rollout plan to publish 60+ sector and state pages within a 60-day timeline, producing investor-facing research across 35+ sectors, 28 states, and 8 uts for the invest india platform.</li>
-        <li>served as the on-site point of contact at invest india, aligning policy experts, sector teams, and developers to translate business requirements into structured, publish-ready content.</li>
-        <li>translated complex policy and sector analysis into concise, user-friendly web content and data summaries to improve platform usability for investors.</li>
-        <li>partnered with the indian institute of banking &amp; finance (iibf) to plan and develop financial-awareness content, supporting nationwide outreach and engagement objectives.</li>
-      </ul>
-    </div>
+    <h2>what building it taught me</h2>
+    <p>when we started, i didn't know what a terminal was.</p>
+    <p>i came from finance. everything was unfamiliar: xcode, claude code, codex, supabase, firebase. i asked what felt like hundreds of dumb questions, and at some point i stopped caring how dumb they sounded, because i wanted the thing to exist more than i wanted to look like i knew what i was doing.</p>
+    <p>it's easy, from the outside, to say a feature should work a certain way. then you try to build the smallest version of it and find out how hard small is. i have mad respect for anyone who was building products before ai agents existed.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">plotx (now hunch)</span>
-      </div>
-      <div class="entry-role">research analyst, crypto &amp; nft · jun 2022 – feb 2023</div>
-      <ul>
-        <li>launched the nft category end-to-end: authored the feasibility (aida) report, owned launch strategy and creatives. achieved participation from 109+ countries with ~80% repeat participation.</li>
-        <li>designed and executed growth and ux strategy across nft, football, and cricket categories, driving a 70% increase in daily participation by simplifying user flows (7 → 3 clicks) and reducing friction.</li>
-        <li>built and scaled community growth across discord (24k+), x (~15k), and telegram (~9k), defining engagement playbooks, campaigns, amas, and event-led activation to improve adoption and retention.</li>
-        <li>partnered with the head of strategy on market research, trend analysis, and product prioritisation to inform roadmap decisions and category expansion.</li>
-        <li>supported hiring by interviewing 8+ candidates and defining role expectations. awarded a pre-placement offer for performance.</li>
-      </ul>
-    </div>
+    <h2>the mistakes i'd never repeat</h2>
+    <p>this is the part i think about most.</p>
+    <p><strong>we built features nobody asked for.</strong> we had a working version early and showed it to a handful of people. then, instead of going back for more feedback, we discovered how satisfying it was to keep adding things. the app ended up full of features almost nobody knew existed. eventually even we felt the fatigue.</p>
+    <p><strong>we polished the ui far too early.</strong> we're both perfectionists. one of us would change a colour, the other wouldn't like it, and a week would disappear. the dangerous part is that it feels like progress. you finish the day tired and convinced you added value, and you added almost nothing. make it exist first. make it better later.</p>
+    <p><strong>we launched late.</strong> users don't care how polished it is at the start. they care that it exists and that someone is working on it. speed and iteration are the whole game early, and we learned that after the fact instead of before.</p>
+    <p><strong>we built in private.</strong> we barely posted anywhere. for a fitness product that was close to fatal, because in fitness the community <em>is</em> the customer base. we needed feedback and users and word of mouth, and we'd built no place for any of that to happen.</p>
+    <p><strong>we never wrote the acquisition plan down.</strong> we had ideas. run clubs. college e-cells. lodhi garden and sanjay van in the evenings. talking to runners we passed on our own runs. all of it stayed conversation, because there was always something that felt more urgent that week. that was the biggest one.</p>
+    <p><strong>we deferred the revenue question.</strong> every founder we met asked it. we always said we're focused on users first and we'll figure out money later. it stopped being a theoretical question when the savings got low.</p>
 
-    <div class="entry">
-      <div class="entry-head">
-        <span class="entry-title">readon</span>
-      </div>
-      <div class="entry-role">financial research · nov 2021 – feb 2022</div>
-      <ul>
-        <li>authored 20+ industry articles on indian startups and global financial crises, helping increase reader engagement by ~25%.</li>
-        <li>analysed 5+ indian unicorns and 10+ global scams/crises, producing actionable insights on business models, revenue strategies, and systemic risk.</li>
-        <li>researched the web3 landscape and produced reports on 5+ emerging companies, surfacing adoption trends and investment theses. created scripts for 20+ instagram reels and short-form content, lifting social engagement by ~20%.</li>
-      </ul>
-    </div>
+    <h2>the part that was hard for a different reason</h2>
+    <p>we started as three college friends. i brought the idea, one brought technical resources, one brought the place we worked out of, which is the only reason the all-nighters were possible at all. none of us were technical.</p>
+    <p>when money gets short and there's no visible future, doubt gets into everything. small conversations turn into arguments. i believed in it completely, but you can't keep re-convincing other people every time something goes wrong.</p>
+    <p>one of the three left. it was the infra guy. no grudges, but it sucked.</p>
+    <p>what i didn't expect was the relief. he was rarely around, which meant every decision still had to be briefed back to someone who hadn't been in the room when we made it. once he was gone, the only thing we actually picked up was the work that had already been sitting undone.</p>
+    <p>the real loss was the arguing. he'd question things he didn't understand, and having to answer him forced us to know what we thought. with him gone, nobody was asking, so we had to start asking ourselves.</p>
+    <p>that's when we finally stopped and regrouped. the two of us had been so deep in building that we'd never seriously worked through revenue, or how anyone would find us. we sat with those questions for the first time. we started posting on reddit to see whether people cared about what we were making, then on instagram.</p>
+    <p>it should have happened months earlier. it took losing a co-founder to make it happen at all.</p>
+    <p>the two of us kept going. we built, tested, talked to users, scrapped things, used the product ourselves, ran, walked. we pushed to the app store, got rejected, and got in on the second try.</p>
+
+    <h2>the moments i'll keep</h2>
+    <p>users calling us. not emailing, calling, to say something was broken or something was good or something should exist. someone cared enough to expect it to work.</p>
+    <p>sleeping at 7am and getting up at 11 to keep going, with nobody waiting on us and no deadline anyone else had set.</p>
+    <p>getting an idea in the middle of a run and going home fast to find out whether it worked.</p>
+    <p>walking up to strangers to talk about it. i'm an introvert. i had no choice. after enough rejections the skin thickens and the fear just goes.</p>
+
+    <h2>where it is now</h2>
+    <p>live on the app store, with a small group of users who still use it and still call.</p>
+    <p>the product works. growth doesn't, yet. building it turned out to be roughly half the job, and getting people to find it, trust it, and keep opening it turned out to be the harder half.</p>
+    <p>i left my job in march 2025 to build something of my own. stride showed up as an idea that december, and we started building at the end of january.</p>
+    <p>i've learned what i can on my own for now. what i want next is to work close to people who build. people who move with urgency, who chase a problem because it genuinely bothers them, who are trying to put a hole in the universe. i think that part only gets learned by being in the room.</p>
+    <p>stride isn't over. it's paused.</p>
+
+    <hr class="rule">
+    <p class="closer">before this i thought building software was something engineers did. now i know that if i'm curious enough about a problem, i can learn whatever it takes to work on it. that turned out to be the actual product.</p>
+
+  </article>
 
 
   <footer>
-    <span id="rotator">…</span>
+    <span id="rotator">&hellip;</span>
     <span class="mono">refining as i learn</span>
   </footer>
 
@@ -461,16 +428,11 @@
 <script>
   const lines = [
     "you scrolled all the way down. we should probably talk.",
-    "the more we value things outside our control, the less control we have. — epictetus",
-    "day by day, what you do is who you become — heraclitus",
-    "ever failed. no matter. try again. fail again. fail better. — samuel beckett",
     "the best way to predict the future is to ship it.",
+    "make it exist first. make it better later.",
     "ask.",
-    "addition by subtraction.",
     "consistency creates competence.",
-    "to earn compound interest, compound your interests.",
-    "the most important thing is on the other side of smth uncomfortable.",
-    "if you don't risk the bad meal you'd never get the magical one. — anthony bourdain"
+    "if you don't risk the bad meal you'd never get the magical one. \u2014 anthony bourdain"
   ];
   document.getElementById("rotator").textContent = lines[Math.floor(Math.random() * lines.length)];
 
@@ -481,11 +443,11 @@
 
   const btn = document.getElementById("theme-btn");
   const root = document.documentElement;
-  btn.textContent = "☀";
+  btn.textContent = "\u2600";
   btn.addEventListener("click", () => {
     const dark = root.getAttribute("data-theme") === "dark";
     root.setAttribute("data-theme", dark ? "light" : "dark");
-    btn.textContent = dark ? "☾" : "☀";
+    btn.textContent = dark ? "\u263E" : "\u2600";
   });
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
