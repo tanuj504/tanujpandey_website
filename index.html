@@ -258,6 +258,25 @@
   }
   .view-all:hover, .view-all:focus-visible { text-decoration: underline; }
 
+  /* section header with a right-aligned link */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .section-head .label { margin-bottom: 0; }
+  .view-all-inline {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: .05em;
+    color: var(--marker);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .view-all-inline:hover, .view-all-inline:focus-visible { text-decoration: underline; }
+
   /* ── work rows: title + desc left, year right ── */
   .work-row {
     display: flex;
@@ -385,7 +404,10 @@
        To swap which 3 appear here, just change these three blocks.
        Every project lives in full on work.html. ═══ -->
   <section id="work">
-    <span class="label">selected work</span>
+    <div class="section-head">
+      <span class="label">selected work</span>
+      <a class="view-all-inline" href="work.html">view all &rarr;</a>
+    </div>
     <div class="work-row">
       <div class="work-main">
         <a class="work-title" href="stride.html">stride</a>
@@ -407,7 +429,6 @@
       </div>
       <span class="post-meta">2022–23</span>
     </div>
-    <a class="view-all" href="work.html">everything i've worked on →</a>
   </section>
 
   <!-- ═══ WRITING: notes + ideas + essays all live here. Title + date only. ═══ -->
