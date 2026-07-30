@@ -37,7 +37,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
-  html, body { overflow-x: hidden; max-width: 100%; }
+  html, body { overflow-x: clip; max-width: 100%; }
 
   body {
     background: var(--paper);
@@ -89,6 +89,10 @@
     color: var(--fill-ink);
   }
 
+  /* body text grey, with ink-coloured key phrases */
+  .soft { color: var(--fill-ink); }
+  .key { color: var(--ink); }
+
   /* surname in the logo: grey, no underline */
   .surname { color: var(--fill-ink); }
 
@@ -111,7 +115,7 @@
   header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     margin-bottom: 72px;
     position: sticky;
     top: 0;
@@ -400,16 +404,16 @@
   <!-- ═══ NOW: update this content, then push. The timestamp auto-updates on deploy. ═══ -->
   <section>
     <span class="label">now</span>
-    <p>currently <span class="fill">building STRIDE a running app that makes runs matter</span>. also <span class="fill">as a side quest helping lawyers translate boring native language documents into english using ai</span>.</p>
-    <p>obsessing over <em class="flair"><span class="fill">making money not from a job</span></em> lately.</p>
+    <p class="soft">currently building <span class="key">STRIDE</span>, a running app that makes runs matter. also, as a <span class="key">side quest helping lawyers</span> translate boring native language documents into english using ai.</p>
+    <p class="soft">obsessing over <em class="flair"><span class="key">making money not from a job</span></em> lately.</p>
     <p class="mono" style="margin-top:14px">last updated: <span id="last-updated"></span></p>
   </section>
 
   <!-- ═══ STORY: the arc, not the timeline. One paragraph. ═══ -->
   <section>
     <span class="label">story, compressed</span>
-    <p>born in <span class="fill">madhya pradesh</span>, raised in <span class="fill">new delhi</span>. i've always been more interested in understanding <span class="fill"> how things work than becoming an expert in one thing</span>. that's taken me through <span class="fill">finance, startups, product thinking, ai, customer research, and plenty of unexpected rabbit holes </span>. studied <span class="fill">bba(fia)</span> from <span class="fill"> shaheed sukhdev college of business studies </span>. now i spend my time <span class="fill">vibe-coding my ideas to life</span>.</p>
-    <p>off the clock: i <span class="fill">read</span>, <span class="fill">run</span>, <span class="fill">go to the gym</span>, <span class="fill">watch mma & football</span> and spend an unreasonable amount time <em class="flair"><span class="fill">losing at chess</span></em>.</p>
+    <p class="soft">born in <span class="key">madhya pradesh</span>, raised in <span class="key">new delhi</span>. i've always been more interested in understanding <span class="key">how things work</span> than becoming an expert in one thing. that's taken me through <span class="key">finance, startups, product thinking, ai, customer research</span>, and plenty of unexpected <span class="key">rabbit holes</span>. studied <span class="key">bba(fia)</span> from <span class="key">shaheed sukhdev college of business studies</span>. now i spend my time <span class="key">vibe-coding my ideas to life</span>.</p>
+    <p class="soft">off the clock: i <span class="key">read</span>, <span class="key">run</span>, <span class="key">go to the gym</span>, <span class="key">watch mma &amp; football</span>, and spend an unreasonable amount of time <em class="flair"><span class="key">losing at chess</span></em>.</p>
   </section>
 
   <!-- ═══ SELECTED WORK ═══

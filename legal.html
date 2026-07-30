@@ -32,7 +32,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
-  html, body { overflow-x: hidden; max-width: 100%; }
+  html, body { overflow-x: clip; max-width: 100%; }
 
   body {
     background: var(--paper);
@@ -84,6 +84,10 @@
     color: var(--fill-ink);
   }
 
+  /* body text grey, with ink-coloured key phrases */
+  .soft { color: var(--fill-ink); }
+  .key { color: var(--ink); }
+
   /* surname in the logo: grey, no underline */
   .surname { color: var(--fill-ink); }
 
@@ -106,7 +110,7 @@
   header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     margin-bottom: 72px;
     position: sticky;
     top: 0;
