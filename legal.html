@@ -32,6 +32,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
+  html, body { overflow-x: hidden; max-width: 100%; }
 
   body {
     background: var(--paper);
@@ -78,10 +79,13 @@
   }
 
   /* ── placeholders you must replace ──────── */
+  /* grey emphasis text (was the placeholder marker) */
   .fill {
     color: var(--fill-ink);
-    border-bottom: 1.5px dashed var(--fill-ink);
   }
+
+  /* surname in the logo: grey, no underline */
+  .surname { color: var(--fill-ink); }
 
   /* cursor: custom marker icon — revisit later */
 
@@ -116,7 +120,7 @@
     position: absolute;
     top: 0; bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    margin-left: -50vw;
     width: 100vw;
     z-index: -1;
     opacity: 0;
@@ -325,11 +329,27 @@
   footer .mono { font-size: 12px; }
   #rotator { font-family: "Instrument Serif", serif; font-style: italic; font-size: 17px; font-weight: 700; color: var(--ink); }
 
-  @media (max-width: 480px) {
-    .wrap { padding-top: 32px; }
-    header { margin-bottom: 52px; }
-    h1 { font-size: 26px; }
+  @media (max-width: 560px) {
+    .wrap { padding: 28px 18px 72px; }
+    header { margin-bottom: 48px; padding: 12px 0; gap: 10px; }
+    .logo { font-size: 14px; gap: 6px; }
+    .logo-img { width: 22px; height: 22px; }
+    nav { gap: 11px; }
+    nav a { font-size: 12.5px; }
+    #theme-btn { font-size: 13px; }
+    h1 { font-size: 20px; line-height: 1.55; }
     .row { grid-template-columns: 48px 1fr; gap: 12px; }
+    .work-row, .post-row { gap: 14px; padding: 22px 12px; margin: 0 -12px; }
+    .work-title, .post-title { font-size: 18px; }
+    .work-desc { font-size: 14.5px; }
+    .post-meta { font-size: 12px; }
+    .page-title { font-size: 24px; }
+    article p, article .lede { font-size: 16px; }
+    footer { flex-direction: column; gap: 10px; }
+  }
+  @media (max-width: 380px) {
+    .logo-text { display: none; }
+    nav { gap: 13px; }
   }
 </style>
 
@@ -353,7 +373,7 @@
 <div class="wrap">
 
   <header>
-    <a class="logo" href="index.html"><img src="avatar.png" alt="" class="logo-img"><span class="logo-text">tanujpandey</span></a>
+    <a class="logo" href="index.html"><img src="avatar.png" alt="" class="logo-img"><span class="logo-text">tanuj<span class="surname">pandey</span></span></a>
     <nav>
       <a href="work.html">work</a>
       <a href="index.html#writing">writing</a>
